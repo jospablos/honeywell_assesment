@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Loader from './Loader';
 import './SubmitStep.css';
 
 const submitSignupData = async (signupData) => {
@@ -9,7 +10,7 @@ const submitSignupData = async (signupData) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve();
-    }, 3000);
+    }, 5000);
   });
 }
 
@@ -21,7 +22,7 @@ export default function SubmitStep({ state, goToNextStep }) {
 
   return (
     <div className="SubmitStep-container Page-full">
-      <h1>{'<Loading indicator here />'}</h1>
+      <Loader />
       <h1>Creating your account</h1>
     </div>
   );
