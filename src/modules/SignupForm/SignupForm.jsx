@@ -1,11 +1,12 @@
 import './SignupForm.css';
 
-export default function SignupForm({inputs}) {
+export default function SignupForm({inputConfig, inputState, onInputChange}) {
+
   return (
     <form className='SignupForm-form'>
-      {inputs.map((input) => {
+      {inputConfig.map((input) => {
         return (
-          <input.component {...input} />
+          <input.component {...input} value={inputState[input.id].value} onChange={onInputChange} />
         );
       })}
     </form>
