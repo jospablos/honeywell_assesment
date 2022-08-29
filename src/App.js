@@ -18,28 +18,38 @@ const email = (value) => {
   }
 };
 
+
+const username = (value) => {
+  const spaceRegex = /\s/;
+  if (spaceRegex.test(value)) {
+    return `Should not contain spaces`;
+  }
+};
+
+const createValidator = (validators) => (value) => {
+  for (const validator of validators) {
+    const error = validator(value);
+    if (error) {
+      return error;
+    }
+  }
+}
+
 const signupConfig = {
   email: {
     id: 'email',
     indicatorLabel: 'Email',
     label: 'Enter your email:',
     component: DefaultInput,
-    validate: (value) => {
-      const validators = [required('Email'), email];
-      for (const validator of validators) {
-        const error = validator(value);
-        if (error) {
-          return error;
-        }
-      }
-    }
+    validate: createValidator([required('Email'), email]),
   },
-  // username: {
-  //   id: 'username',
-  //   indicatorLabel: 'username',
-  //   label: 'Choose a username:',
-  //   component: DefaultInput,
-  // },
+  username: {
+    id: 'username',
+    indicatorLabel: 'username',
+    label: 'Choose a username:',
+    component: DefaultInput,
+    validate: createValidator([required('Username'), username]),
+  },
   // password: {
   //   id: 'password',
   //   indicatorLabel: 'Password',
