@@ -1,19 +1,15 @@
 import DefaultSpacer from './DefaultSpacer';
 import './ProgressIndicator.css';
 
-// type Step = {
-//     id: string;
-//     complete: boolean;
-//     label: string;
-// }
 
-// type Props = {
-//     steps: Step[];
-// }
-
-export default function ProgressIndicator({ steps, stepRenderer, spacer = DefaultSpacer }) {
+export default function ProgressIndicator({ state, config, stepRenderer, spacer = DefaultSpacer }) {
     const Renderer = stepRenderer;
     const Spacer = spacer;
+    const steps = Object.values(config).map(field => ({
+        id: field.id,
+        complete: state[field.id].isComplete,
+        label: config[field.id].indicatorLabel,
+    }));
     return (
         <div className="ProgressIndicator-container">
             {steps.map((step, index) => {

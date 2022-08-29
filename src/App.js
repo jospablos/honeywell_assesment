@@ -89,11 +89,8 @@ function App() {
   return (
     <div className="App">
       <ProgressIndicator
-        steps={[
-          { id: 'email', label: 'Email', complete: true },
-          { id: 'username', label: 'Username', complete: false },
-          { id: 'password', label: 'Password', complete: false },
-        ]}
+        state={formState}
+        config={signupConfig}
         stepRenderer={EmojiIndicator}
       />
       <SignupForm
