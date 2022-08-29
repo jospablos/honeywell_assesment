@@ -1,9 +1,9 @@
 import "./FieldStepper.css";
-import EmojiIndicator from "../IndicatorRenderers/EmojiIndicator/EmojiIndicator";
+// import EmojiIndicator from "../IndicatorRenderers/EmojiIndicator/EmojiIndicator";
 import ProgressIndicator from "../ProgressIndicator/ProgressIndicator";
 import NextButton from "./NextButton";
+import BlobIndicator from "../IndicatorRenderers/BlobIndicator/BlobIndicator";
 
-// TODO: is this Component even needed?
 export default function FieldStepper({
   state,
   fieldConfig,
@@ -27,7 +27,9 @@ export default function FieldStepper({
       <ProgressIndicator
         state={state}
         config={fieldConfig}
-        stepRenderer={EmojiIndicator}
+        currentStep={currentStep}
+        stepRenderer={BlobIndicator}
+        // stepRenderer={EmojiIndicator}
       />
       <div className="FieldStepper-step">
         <form className="FieldStepper-form" onSubmit={onSubmit}>
