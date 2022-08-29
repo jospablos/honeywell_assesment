@@ -26,6 +26,7 @@ export const signupConfig = {
   password: {
     id: "password",
     indicatorLabel: "Password",
+    description: 'At least one digit, one lowercase character, one uppercase character, one special character, and between 8 and 32 characters in length',
     label: "Password",
     component: PasswordConfirm,
     validate: createValidator([required("Password"), password]),

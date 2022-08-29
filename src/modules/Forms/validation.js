@@ -20,11 +20,36 @@ export const username = (value) => {
   }
 };
 
+// At least one digit [0-9]
+// At least one lowercase character [a-z]
+// At least one uppercase character [A-Z]
+// At least one special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\]
+// At least 8 characters in length, but no more than 32.
+// No whitespaces.
 export const password = (value) => {
-  // TODO: implement password validation
-  const passwordRegex = /\s/;
-  if (passwordRegex.test(value)) {
-    return `Password should not contain spaces`;
+  if (/\s/.test(value)) {
+    return 'Password should not contain spaces';
+  }
+
+  if (!/[0-9]/.test(value)) {
+    return 'Password should contain at least one digit [0-9]';
+  }
+
+  if (!/[a-z]/.test(value)) {
+    return 'Password should contain at least one lowercase character [a-z]';
+  }
+
+  if (!/[A-Z]/.test(value)) {
+    return 'Password should contain at least one uppercase character [A-Z]';
+  }
+
+  if (!/[*.!@#$%^&(){}[\]:;<>,.?/~_\+\-=|\\]+/.test(value)) {
+    return 'Password should contain at least one special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\\]';
+  }
+
+  const valueLength = value.length;
+  if (valueLength < 8 || valueLength > 32) {
+    return 'Password should be between 8 and 32 characters in length';
   }
 };
 
