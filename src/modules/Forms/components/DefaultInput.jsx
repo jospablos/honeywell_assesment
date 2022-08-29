@@ -1,22 +1,26 @@
+import { useState } from 'react';
 import './DefaultInput.css';
 import classnames from 'classnames';
 
-export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate, onFinished }) {
-    const onChange = (e) => {
-        onChangeProp(id, e.target.value);
-    }
+export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate }) {
+    const [hasFocusedOut, setHasFocusedOut] = useState(false);
 
+    const onChange = (e) => {
+        const error = validate(e.currentTarget.value);
+        onChangeProp(id, e.target.value, error);
+    }
+    
     const onBlur = (e) => {
         const error = validate(e.currentTarget.value);
-        const isComplete = !error;
-        onFinished(id, isComplete, error);
+        onChangeProp(id, e.target.value, error);
+        setHasFocusedOut(true);
     }
 
     return (
-        <div className={classnames("DefaultInput-container", { error })}>
+        <div className={classnames("DefaultInput-container", { error: hasFocusedOut && error })}>
             <label>{label}</label>
             <input value={value} type={type} onChange={onChange} onBlur={onBlur} />
-            <div className="DefaultInput-error">{error}</div>
+            <div className="DefaultInput-error">{hasFocusedOut && error}</div>
         </div>
     );
 }

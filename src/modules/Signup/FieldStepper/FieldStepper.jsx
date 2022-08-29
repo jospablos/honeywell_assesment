@@ -10,9 +10,10 @@ export default function FieldStepper({
   currentStep,
   onInputChange,
   onInputFinished,
-  goToNextStep
+  goToNextStep,
+  nextStepEnabled,
+  enableNextStep
 }) {
-  const currentStepState = state[currentStep];
   const currentStepConfig = fieldConfig[currentStep];
 
   // TODO: We want to keep using form because it helps screen readers understand there is a field to be filled.
@@ -37,11 +38,12 @@ export default function FieldStepper({
             error={state[currentStepConfig.id].error}
             onChange={onInputChange}
             onFinished={onInputFinished}
+            enableNextStep={enableNextStep}
           />
         </form>
         <div className="FieldStepper-nextButtonWrapper">
           <NextButton
-            disabled={!currentStepState.isComplete}
+            enabled={nextStepEnabled}
             goNext={goToNextStep}
           />
         </div>
