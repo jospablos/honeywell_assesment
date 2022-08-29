@@ -15,7 +15,6 @@ export const signupConfig = {
     label: "Enter your email:",
     component: DefaultInput,
     validate: createValidator([required("Email"), email]),
-    nextStep: "username",
   },
   username: {
     id: "username",
@@ -23,7 +22,6 @@ export const signupConfig = {
     label: "Choose a username:",
     component: DefaultInput,
     validate: createValidator([required("Username"), username]),
-    nextStep: "password",
   },
   password: {
     id: "password",

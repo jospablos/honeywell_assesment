@@ -2,6 +2,10 @@ import './SignupForm.css';
 
 // TODO: is this Component even needed?
 export default function SignupForm({ currentStep, inputConfig, inputState, onInputChange, onInputFinished}) {
+  if (currentStep === "submitting") {
+    return <div>Submitting...</div>;
+  }
+
   const currentStepConfig = inputConfig[currentStep];
   return (
     <form className='SignupForm-form'>

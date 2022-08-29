@@ -4,6 +4,7 @@ import ProgressIndicator from "./ProgressIndicator/ProgressIndicator";
 import SignupForm from "./SignupForm/SignupForm";
 import NextButton from "./SignupForm/NextButton";
 import { signupConfig } from "./signupConfig";
+import SubmitStep from "./SubmitStep/SubmitStep";
 
 const generateFormState = (config) => {
   return Object.values(config).reduce((acc, input) => {
@@ -17,7 +18,7 @@ const generateFormState = (config) => {
 };
 
 export default function SignupPage() {
-  const [currentStep, setCurrentStep] = useState("email");
+  const [currentStep, setCurrentStep] = useState("submit");
   const [formState, setFormState] = useState(generateFormState(signupConfig));
 
   const currentStepState = formState[currentStep];
@@ -46,30 +47,49 @@ export default function SignupPage() {
 
   const goToNextStep = () => {
     if (currentStepState.isComplete) {
-      setCurrentStep(signupConfig[currentStep].nextStep);
+      const nextIncomplete = Object.keys(formState).find((inputId) => !formState[inputId].isComplete)
+      if (nextIncomplete) {
+        setCurrentStep(nextIncomplete);
+      } else {
+        setCurrentStep("submit");
+      }
     }
   };
 
+  const renderFormBody = () => {
+    switch(currentStep) {
+      case "submit":
+        return <SubmitStep />;
+
+      default:
+        return (
+          <div className="SignupPage-formBody">
+            <ProgressIndicator
+              state={formState}
+              config={signupConfig}
+              stepRenderer={EmojiIndicator}
+            />
+            <SignupForm
+              currentStep={currentStep}
+              inputConfig={signupConfig}
+              inputState={formState}
+              onInputChange={handleInputChange}
+              onInputFinished={handleInputFinished}
+            />
+            <div className="SignupForm-nextButtonWrapper">
+              <NextButton
+                disabled={!currentStepState.isComplete}
+                goNext={goToNextStep}
+              />
+            </div>
+          </div>
+        );
+    }
+  }
+
   return (
-    <div>
-      <ProgressIndicator
-        state={formState}
-        config={signupConfig}
-        stepRenderer={EmojiIndicator}
-      />
-      <SignupForm
-        currentStep={currentStep}
-        inputConfig={signupConfig}
-        inputState={formState}
-        onInputChange={handleInputChange}
-        onInputFinished={handleInputFinished}
-      />
-      <div className="SignupForm-nextButtonWrapper">
-        <NextButton
-          disabled={!currentStepState.isComplete}
-          goNext={goToNextStep}
-        />
-      </div>
+    <div className="Page-full">
+      {renderFormBody()}
     </div>
   );
 }
