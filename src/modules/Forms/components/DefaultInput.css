@@ -39,16 +39,11 @@
 
 .DefaultInput-container.error input {
     border-color: #992215;
-    /* border-color: #f0be49; */
-    /* border-color: #f0be49; */
     border-width: 3px;
 }
 
 .DefaultInput-error {
     color: #992215;
-    /* color: #bc1300; */
-    /* color: #f0be49; */
-    /* color: #bc0000; */
     font-size: 18px;
     font-weight: 500;
     min-height: 27px;
