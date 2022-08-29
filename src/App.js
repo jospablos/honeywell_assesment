@@ -4,7 +4,8 @@ import EmojiIndicator from './modules/EmojiIndicator/EmojiIndicator';
 import ProgressIndicator from './modules/ProgressIndicator/ProgressIndicator';
 import SignupForm from './modules/SignupForm/SignupForm';
 import DefaultInput from './modules/SignupForm/components/DefaultInput';
-import { createValidator, required, email, username } from './modules/SignupForm/validation';
+import PasswordConfirm from './modules/SignupForm/components/PasswordConfirm';
+import { createValidator, required, email, username, password } from './modules/SignupForm/validation';
 
 const signupConfig = {
   email: {
@@ -21,12 +22,13 @@ const signupConfig = {
     component: DefaultInput,
     validate: createValidator([required('Username'), username]),
   },
-  // password: {
-  //   id: 'password',
-  //   indicatorLabel: 'Password',
-  //   label: 'Password',
-  //   component: PasswordConfirm,
-  // },
+  password: {
+    id: 'password',
+    indicatorLabel: 'Password',
+    label: 'Password',
+    component: PasswordConfirm,
+    validate: createValidator([required('Password'), password]),
+  },
 }
 
 const signupInputs = Object.values(signupConfig);
