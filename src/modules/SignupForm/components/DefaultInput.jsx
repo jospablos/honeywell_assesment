@@ -3,8 +3,7 @@ import classnames from 'classnames';
 
 export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate, onFinished }) {
     const onChange = (e) => {
-        const error = validate(e.target.value);
-        onChangeProp(id, e.target.value, error);
+        onChangeProp(id, e.target.value);
     }
 
     const onBlur = (e) => {
