@@ -64,6 +64,7 @@ export const password = (value) => {
   }
 };
 
+// TODO: add async validations? for example, check if email or username already exists?
 export const createValidator = (validators) => (value) => {
   for (const validator of validators) {
     const error = validator(value);
