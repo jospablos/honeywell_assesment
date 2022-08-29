@@ -1,6 +1,6 @@
 import './SignupForm.css';
 
-export default function SignupForm({inputConfig, inputState, onInputChange}) {
+export default function SignupForm({inputConfig, inputState, onInputChange, onInputError}) {
 
   return (
     <form className='SignupForm-form'>
@@ -11,6 +11,7 @@ export default function SignupForm({inputConfig, inputState, onInputChange}) {
             value={inputState[config.id].value}
             error={inputState[config.id].error}
             onChange={onInputChange}
+            onError={onInputError}
           />
         );
       })}

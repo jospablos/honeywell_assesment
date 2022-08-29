@@ -74,6 +74,16 @@ function App() {
       });
   }
 
+  const handleInputError = (inputId, error) => {
+    return setFormState({
+      ...formState,
+      [inputId]: {
+        ...formState[inputId],
+        error,
+      }
+    });
+  };
+
   return (
     <div className="App">
       <ProgressIndicator
@@ -88,6 +98,7 @@ function App() {
         inputConfig={signupInputs}
         inputState={formState}
         onInputChange={handleInputChange}
+        onInputError={handleInputError}
       />
     </div>
   );
