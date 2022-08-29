@@ -12,11 +12,22 @@ export const email = (value) => {
   }
 };
 
-
+// TODO: move min/max validations to a separate validator function
+// At least 8 characters in length, but no more than 16.
+// no special characters
 export const username = (value) => {
   const spaceRegex = /\s/;
   if (spaceRegex.test(value)) {
     return `Should not contain spaces`;
+  }
+
+  const valueLength = value.length;
+  if (valueLength <= 8 || valueLength >= 32) {
+    return 'Should be between 8 and 16 characters in length';
+  }
+
+  if (/[*.!@#$%^&(){}[\]:;<>,.?/~_\+\-=|\\]+/.test(value)) {
+    return 'Should not contain special characters [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\\]';
   }
 };
 
@@ -48,8 +59,8 @@ export const password = (value) => {
   }
 
   const valueLength = value.length;
-  if (valueLength < 8 || valueLength > 32) {
-    return 'Password should be between 8 and 32 characters in length';
+  if (valueLength <= 8 || valueLength >= 32) {
+    return 'Should be between 8 and 32 characters in length';
   }
 };
 
