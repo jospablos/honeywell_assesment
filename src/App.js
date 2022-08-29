@@ -4,36 +4,7 @@ import EmojiIndicator from './modules/EmojiIndicator/EmojiIndicator';
 import ProgressIndicator from './modules/ProgressIndicator/ProgressIndicator';
 import SignupForm from './modules/SignupForm/SignupForm';
 import DefaultInput from './modules/SignupForm/components/DefaultInput';
-
-const required = (field) => (value) => {
-  if (!value) {
-    return `${field} is required`;
-  }
-};
-
-const email = (value) => {
-  const emailRegex = /jiji/;
-  if (!emailRegex.test(value)) {
-    return `Should be a valid email`;
-  }
-};
-
-
-const username = (value) => {
-  const spaceRegex = /\s/;
-  if (spaceRegex.test(value)) {
-    return `Should not contain spaces`;
-  }
-};
-
-const createValidator = (validators) => (value) => {
-  for (const validator of validators) {
-    const error = validator(value);
-    if (error) {
-      return error;
-    }
-  }
-}
+import { createValidator, required, email, username } from './modules/SignupForm/validation';
 
 const signupConfig = {
   email: {
