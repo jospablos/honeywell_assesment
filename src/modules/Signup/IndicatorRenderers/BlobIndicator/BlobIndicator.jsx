@@ -22,7 +22,7 @@ function BlobObject({step}) {
         color={step.complete ? '#adff2f' : 'white'}
         attach="material"
         distort={step.active ? .7 : 0}
-        speed={step.active ? 2 : 0}
+        speed={step.active ? 5 : 0}
         roughness={0}
       />
     </Sphere>
