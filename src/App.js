@@ -55,6 +55,7 @@ const generateFormState = (inputs) => {
     acc[input.id] = {
       value: '',
       error: null,
+      isComplete: false,
     };
     return acc;
   } , {});
@@ -74,11 +75,12 @@ function App() {
       });
   }
 
-  const handleInputError = (inputId, error) => {
+  const handleInputFinished = (inputId, isComplete, error) => {
     return setFormState({
       ...formState,
       [inputId]: {
         ...formState[inputId],
+        isComplete,
         error,
       }
     });
@@ -98,7 +100,7 @@ function App() {
         inputConfig={signupInputs}
         inputState={formState}
         onInputChange={handleInputChange}
-        onInputError={handleInputError}
+        onInputFinished={handleInputFinished}
       />
     </div>
   );
