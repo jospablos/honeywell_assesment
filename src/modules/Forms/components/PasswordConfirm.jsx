@@ -51,6 +51,7 @@ export default function PasswordConfirm(props) {
         onChange={onConfirmationChange}
         validate={validateConfirmation}
         enableNextStep={props.enableNextStep}
+        autoFocus={false}
       />
     </>
   );
