@@ -20,7 +20,7 @@ export default function SubmitStep({ state, goToNextStep }) {
   })
 
   return (
-    <div className="SubmitStep-container">
+    <div className="SubmitStep-container Page-full">
       <h1>{'<Loading indicator here />'}</h1>
       <h1>Creating your account</h1>
     </div>
