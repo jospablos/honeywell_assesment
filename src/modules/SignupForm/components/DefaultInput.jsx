@@ -1,9 +1,10 @@
 import './DefaultInput.css';
 import classnames from 'classnames';
 
-export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp }) {
+export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate }) {
     const onChange = (e) => {
-        onChangeProp(id, e.target.value);
+        const error = validate(e.target.value);
+        onChangeProp(id, e.target.value, error);
     }
 
     return (

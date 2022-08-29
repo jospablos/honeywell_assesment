@@ -4,9 +4,14 @@ export default function SignupForm({inputConfig, inputState, onInputChange}) {
 
   return (
     <form className='SignupForm-form'>
-      {inputConfig.map((input) => {
+      {inputConfig.map((config) => {
         return (
-          <input.component {...input} value={inputState[input.id].value} onChange={onInputChange} />
+          <config.component
+            {...config}
+            value={inputState[config.id].value}
+            error={inputState[config.id].error}
+            onChange={onInputChange}
+          />
         );
       })}
     </form>
