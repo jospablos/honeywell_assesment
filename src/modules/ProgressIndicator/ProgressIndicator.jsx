@@ -1,3 +1,4 @@
+import React from 'react';
 import DefaultSpacer from './DefaultSpacer';
 import './ProgressIndicator.css';
 
@@ -15,10 +16,10 @@ export default function ProgressIndicator({ state, config, stepRenderer, spacer 
             {steps.map((step, index) => {
                 const needsSpacer = index < steps.length - 1;
                 return (
-                    <>
+                    <React.Fragment key={step.id}>
                         <Renderer {...step} />
                         {needsSpacer && <Spacer />}
-                    </>
+                    </React.Fragment>
                 );
             })}
         </div>

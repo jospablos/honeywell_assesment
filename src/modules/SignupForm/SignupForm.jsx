@@ -7,6 +7,7 @@ export default function SignupForm({inputConfig, inputState, onInputChange, onIn
       {inputConfig.map((config) => {
         return (
           <config.component
+            key={config.id}
             {...config}
             value={inputState[config.id].value}
             error={inputState[config.id].error}
