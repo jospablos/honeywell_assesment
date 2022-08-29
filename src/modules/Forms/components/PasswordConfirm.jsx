@@ -16,8 +16,7 @@ export default function PasswordConfirm(props) {
   const [confirmationError, setConfirmationError] = useState('');
 
   const onPasswordChange = (id, value, error) => {
-    // const confError = validateConfirmation(confirmation, props);
-    const confError = value !== confirmation ? "Passwords do not match" : "";
+    const confError = !confirmation || value !== confirmation ? "Passwords do not match" : "";
     setConfirmationError(confError);
     props.enableNextStep(!confError);
     props.onChange(id, value, error);
@@ -51,6 +50,7 @@ export default function PasswordConfirm(props) {
         error={confirmationError}
         onChange={onConfirmationChange}
         validate={validateConfirmation}
+        enableNextStep={props.enableNextStep}
       />
     </>
   );

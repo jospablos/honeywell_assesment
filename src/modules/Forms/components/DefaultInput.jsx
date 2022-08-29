@@ -2,11 +2,12 @@ import { useState } from 'react';
 import './DefaultInput.css';
 import classnames from 'classnames';
 
-export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate }) {
+export default function DefaultInput({ id, label, error, type = 'text', value, onChange: onChangeProp, validate, enableNextStep }) {
     const [hasFocusedOut, setHasFocusedOut] = useState(false);
 
     const onChange = (e) => {
         const error = validate(e.currentTarget.value);
+        enableNextStep(!error);
         onChangeProp(id, e.target.value, error);
     }
     

@@ -16,7 +16,7 @@ const generateFormState = (config) => {
 };
 
 export default function SignupPage() {
-  const [currentStep, setCurrentStep] = useState("password");
+  const [currentStep, setCurrentStep] = useState("email");
   const [nextStepEnabled, setNextStepEnabled] = useState(false);
   const [formState, setFormState] = useState(generateFormState(signupConfig));
 
@@ -52,6 +52,7 @@ export default function SignupPage() {
           const isCurrentStepComplete = formState[currentStep].isComplete;
           if (isCurrentStepComplete) {
             setCurrentStep(nextIncomplete);
+            setNextStepEnabled(false);
           }
         }
       }
