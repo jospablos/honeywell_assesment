@@ -7,7 +7,7 @@ import DefaultInput from './modules/SignupForm/components/DefaultInput';
 const signupConfig = {
   email: {
     indicatorLabel: 'Email',
-    label: 'Your best email:',
+    label: 'Enter your email:',
     component: DefaultInput,
   },
   // username: {

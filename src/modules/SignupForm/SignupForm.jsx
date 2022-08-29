@@ -1,6 +1,8 @@
+import './SignupForm.css';
+
 export default function SignupForm({inputs}) {
   return (
-    <form>
+    <form className='SignupForm-form'>
       {inputs.map((input) => {
         return (
           <input.component {...input} />
