@@ -14,6 +14,13 @@ export default function FieldStepper({
 }) {
   const currentStepState = state[currentStep];
   const currentStepConfig = fieldConfig[currentStep];
+
+  // TODO: We want to keep using form because it helps screen readers understand there is a field to be filled.
+  const onSubmit = (event) => {
+    event.preventDefault();
+    goToNextStep();
+  }
+
   return (
     <div className="FieldStepper-container">
       <ProgressIndicator
@@ -22,7 +29,7 @@ export default function FieldStepper({
         stepRenderer={EmojiIndicator}
       />
       <div className="FieldStepper-step">
-        <form className="FieldStepper-form">
+        <form className="FieldStepper-form" onSubmit={onSubmit}>
           <currentStepConfig.component
             key={currentStepConfig.id}
             {...currentStepConfig}
