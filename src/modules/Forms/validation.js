@@ -5,7 +5,8 @@ export const required = (field) => (value) => {
 };
 
 export const email = (value) => {
-  const emailRegex = /jiji/;
+  // Taken from https://emailregex.com/
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!emailRegex.test(value)) {
     return `Should be a valid email`;
   }
