@@ -5,6 +5,7 @@ import SignupForm from "./SignupForm/SignupForm";
 import NextButton from "./SignupForm/NextButton";
 import { signupConfig } from "./signupConfig";
 import SubmitStep from "./SubmitStep/SubmitStep";
+import SuccessStep from "./SuccessStep/SuccessStep";
 
 const generateFormState = (config) => {
   return Object.values(config).reduce((acc, input) => {
@@ -18,7 +19,7 @@ const generateFormState = (config) => {
 };
 
 export default function SignupPage() {
-  const [currentStep, setCurrentStep] = useState("submit");
+  const [currentStep, setCurrentStep] = useState("success");
   const [formState, setFormState] = useState(generateFormState(signupConfig));
 
   const currentStepState = formState[currentStep];
@@ -60,6 +61,9 @@ export default function SignupPage() {
     switch(currentStep) {
       case "submit":
         return <SubmitStep />;
+      
+      case "success":
+        return <SuccessStep />;
 
       default:
         return (
