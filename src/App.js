@@ -7,7 +7,7 @@ function LandingPage({setShowSignup}) {
     <>
       <div className='Landing-description'>
         <h1>Welcome to this demo signup</h1>
-        <p>We hope you enjoy this short flow.</p>
+        <p>Hope you enjoy this short user flow.</p>
       </div>
       <button className='SignupButton' onClick={() => setShowSignup(true)}>Sign up</button>
     </>

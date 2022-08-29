@@ -8,9 +8,9 @@ const submitSignupData = async (signupData) => {
   // TODO: submit to API here.
   // const requestPayload = fetch('/api/signup', { method: 'POST', body: requestPayload });
   return new Promise(resolve => {
-    // setTimeout(() => {
-    //   resolve();
-    // }, 5000);
+    setTimeout(() => {
+      resolve();
+    }, 5000);
   });
 }
 

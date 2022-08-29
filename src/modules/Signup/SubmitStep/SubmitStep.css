@@ -7,6 +7,8 @@
     font-size: 30px;
     position: relative;
     top: -60px;
+    /* TODO: move this fade animation to a global import to make sure it's always available for this component. */
+    animation: fade 2s ease;
 }
 
 @media screen and (min-width: 768px) {
