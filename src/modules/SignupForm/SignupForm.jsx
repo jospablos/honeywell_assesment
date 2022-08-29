@@ -1,21 +1,17 @@
 import './SignupForm.css';
 
-export default function SignupForm({inputConfig, inputState, onInputChange, onInputFinished}) {
-
+export default function SignupForm({ currentStep, inputConfig, inputState, onInputChange, onInputFinished}) {
+  const currentStepConfig = inputConfig[currentStep];
   return (
     <form className='SignupForm-form'>
-      {inputConfig.map((config) => {
-        return (
-          <config.component
-            key={config.id}
-            {...config}
-            value={inputState[config.id].value}
-            error={inputState[config.id].error}
-            onChange={onInputChange}
-            onFinished={onInputFinished}
-          />
-        );
-      })}
+      <currentStepConfig.component
+        key={currentStepConfig.id}
+        {...currentStepConfig}
+        value={inputState[currentStepConfig.id].value}
+        error={inputState[currentStepConfig.id].error}
+        onChange={onInputChange}
+        onFinished={onInputFinished}
+      />
     </form>
   );
 }

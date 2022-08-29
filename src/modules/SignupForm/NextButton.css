@@ -1,0 +1,10 @@
+.SignupForm-nextButton {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.SignupForm-nextButton.disabled path {
+    fill: #777;
+    cursor: not-allowed;
+}

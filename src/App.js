@@ -6,6 +6,7 @@ import SignupForm from './modules/SignupForm/SignupForm';
 import DefaultInput from './modules/SignupForm/components/DefaultInput';
 import PasswordConfirm from './modules/SignupForm/components/PasswordConfirm';
 import { createValidator, required, email, username, password } from './modules/SignupForm/validation';
+import NextButton from './modules/SignupForm/NextButton';
 
 const signupConfig = {
   email: {
@@ -14,6 +15,7 @@ const signupConfig = {
     label: 'Enter your email:',
     component: DefaultInput,
     validate: createValidator([required('Email'), email]),
+    nextStep: 'username',
   },
   username: {
     id: 'username',
@@ -21,6 +23,7 @@ const signupConfig = {
     label: 'Choose a username:',
     component: DefaultInput,
     validate: createValidator([required('Username'), username]),
+    nextStep: 'password',
   },
   password: {
     id: 'password',
@@ -28,6 +31,7 @@ const signupConfig = {
     label: 'Password',
     component: PasswordConfirm,
     validate: createValidator([required('Password'), password]),
+    nextStep: 'submit',
   },
 }
 
@@ -45,7 +49,10 @@ const generateFormState = (inputs) => {
 }
 
 function App() {
+  const [currentStep, setCurrentStep] = useState('email');
   const [formState, setFormState] = useState(generateFormState(signupInputs));
+
+  const currentStepState = formState[currentStep];
 
   const handleInputChange = (inputId, value, error) => {
       return setFormState({
@@ -69,19 +76,30 @@ function App() {
     });
   };
 
+  const goToNextStep = () => {
+    if (currentStepState.isComplete) {
+      setCurrentStep(signupConfig[currentStep].nextStep);
+    }
+  };
+
   return (
     <div className="App">
+      {/* TODO: Refactor components below to separate Signup screen */}
       <ProgressIndicator
         state={formState}
         config={signupConfig}
         stepRenderer={EmojiIndicator}
       />
       <SignupForm
-        inputConfig={signupInputs}
+        currentStep={currentStep}
+        inputConfig={signupConfig}
         inputState={formState}
         onInputChange={handleInputChange}
         onInputFinished={handleInputFinished}
       />
+      <div className='SignupForm-nextButtonWrapper'>
+        <NextButton disabled={!currentStepState.isComplete} goNext={goToNextStep} />
+      </div>
     </div>
   );
 }
