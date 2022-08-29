@@ -4,5 +4,11 @@
     justify-content: space-around;
     padding: 15px;
     width: 100%;
-    margin-bottom: 100px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .ProgressIndicator-conmatainer {
+        padding: 20px 0;
+    }
 }

@@ -11,6 +11,7 @@
     opacity: 1;
     /* position: relative; */
     animation: fade 1s ease;
+    color: #d6d1d1;
 }
 
 .DefaultInput-container label {
@@ -27,9 +28,9 @@
 
 .DefaultInput-container input {
     border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #d6d1d1;
     background: none;
-    color: white;
+    color: inherit;
     width: 100%;
     font-size: 24px;
     font-weight: 500;
@@ -37,11 +38,17 @@
 }
 
 .DefaultInput-container.error input {
-    border-color: red;
+    border-color: #992215;
+    /* border-color: #f0be49; */
+    /* border-color: #f0be49; */
+    border-width: 3px;
 }
 
 .DefaultInput-error {
-    color: red;
+    color: #992215;
+    /* color: #bc1300; */
+    /* color: #f0be49; */
+    /* color: #bc0000; */
     font-size: 18px;
     font-weight: 500;
     min-height: 27px;

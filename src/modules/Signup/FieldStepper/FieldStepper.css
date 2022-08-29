@@ -7,6 +7,12 @@
 
 .FieldStepper-step {
     padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: -30px;
 }
 
 .FieldStepper-form {

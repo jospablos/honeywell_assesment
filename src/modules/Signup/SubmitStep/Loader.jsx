@@ -16,7 +16,7 @@ function LoaderObject({ step }) {
   const ref = useRef();
 
   useFrame((state) => {
-    ref.current.position.y = -2 - Math.sin(state.clock.elapsedTime * 3.4) * 1.5;
+    ref.current.position.y = -1 - Math.sin(state.clock.elapsedTime * 3.4) * 1.5;
     ref.current.scale.setScalar(4 + Math.abs(Math.sin(state.clock.elapsedTime * .5)) * 2);
     ref.current.material.color.setRGB(.1 + Math.sin(state.clock.elapsedTime * 2), 0 + Math.sin(state.clock.elapsedTime * .5), .8 + Math.sin(state.clock.elapsedTime * .1));
   });

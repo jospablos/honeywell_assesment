@@ -4,6 +4,15 @@
     align-items: center;
     height: 100vh;
     padding: 20px;
+    font-size: 30px;
+    position: relative;
+    top: -60px;
+}
+
+@media screen and (min-width: 768px) {
+    .SubmitStep-container {
+        top: -80px;
+    }
 }
 
 .SubmitStep-container canvas {

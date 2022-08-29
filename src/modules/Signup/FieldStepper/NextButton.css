@@ -2,9 +2,15 @@
     background: none;
     border: none;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .SignupForm-nextButton.disabled path {
-    fill: #777;
+    fill: #4e4e4e;
     cursor: not-allowed;
+}
+
+.SignupForm-nextButton path {
+    fill: #d6d1d1;;
+    transition: fill 0.3s ease;
 }
