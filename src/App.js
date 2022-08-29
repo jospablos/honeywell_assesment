@@ -9,7 +9,7 @@ function LandingPage({setShowSignup}) {
         <h1>Welcome to this demo signup</h1>
         <p>Hope you enjoy this short user flow.</p>
       </div>
-      <button className='SignupButton' onClick={() => setShowSignup(true)}>Sign up</button>
+      <button className='PrimaryActionButton' onClick={() => setShowSignup(true)}>Sign up</button>
     </>
   );
 }
