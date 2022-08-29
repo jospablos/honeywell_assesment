@@ -19,7 +19,7 @@ const generateFormState = (config) => {
 };
 
 export default function SignupPage() {
-  const [currentStep, setCurrentStep] = useState("success");
+  const [currentStep, setCurrentStep] = useState("submit");
   const [formState, setFormState] = useState(generateFormState(signupConfig));
 
   const currentStepState = formState[currentStep];
@@ -46,13 +46,21 @@ export default function SignupPage() {
     });
   };
 
-  const goToNextStep = () => {
-    if (currentStepState.isComplete) {
-      const nextIncomplete = Object.keys(formState).find((inputId) => !formState[inputId].isComplete)
-      if (nextIncomplete) {
-        setCurrentStep(nextIncomplete);
-      } else {
-        setCurrentStep("submit");
+  const goToNextStep = () => {    
+    switch(currentStep) {
+      case "submit":
+        setCurrentStep("success");
+        break;
+        
+        case "success":
+          // TODO: what's next from here?
+          break;
+
+      default: {
+        const nextIncomplete = Object.keys(formState).find((inputId) => !formState[inputId].isComplete)
+        if (nextIncomplete && currentStepState.isComplete) {
+          setCurrentStep(nextIncomplete);
+        }
       }
     }
   };
@@ -60,7 +68,7 @@ export default function SignupPage() {
   const renderFormBody = () => {
     switch(currentStep) {
       case "submit":
-        return <SubmitStep />;
+        return <SubmitStep state={formState} goToNextStep={goToNextStep} />;
       
       case "success":
         return <SuccessStep />;
