@@ -27,3 +27,22 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
+.Landing-description {
+  margin-bottom: 60px;
+  padding: 10px;
+}
+
+.Landing-description h1 {
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+
+.SignupButton {
+  background: none;
+  padding: 10px 30px;
+  border: 3px solid #d6d1d1;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;;
+}
