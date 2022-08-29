@@ -1,12 +1,12 @@
 .DefaultInput-container {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .DefaultInput-container label {
     font-size: 40px;
     font-weight: 500;
-    text-align: left;
     width: 100%;
     margin-bottom: 20px;
 }
@@ -19,4 +19,16 @@
     width: 100%;
     font-size: 24px;
     font-weight: 500;
-  }
+    margin-bottom: 15px;
+}
+
+.DefaultInput-container.error input {
+    border-color: red;
+}
+
+.DefaultInput-error {
+    color: red;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
