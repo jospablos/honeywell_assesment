@@ -3,24 +3,23 @@ import DefaultInput from "./DefaultInput";
 
 // TODO: when converted to TS, create a common input interface.
 export default function PasswordConfirm(props) {
-  const [confirmation, setConfirmation] = useState('');
-  const [confirmationError, setConfirmationError] = useState('');
+  const [confirmation, setConfirmation] = useState("");
+  const [confirmationError, setConfirmationError] = useState("");
 
   const onPasswordChange = (id, value, error) => {
-    const confError = !confirmation || value !== confirmation ? "Passwords do not match" : "";
+    const confError =
+      !confirmation || value !== confirmation ? "Passwords do not match" : "";
     setConfirmationError(confError);
     props.enableNextStep(!confError);
-    props.onChange(id, value, error);
-  }
+    props.onChange(id, value, error, confirmation && !confError);
+  };
 
   const onConfirmationChange = (_, value, error) => {
     setConfirmation(value);
     setConfirmationError(error);
-    if (!error && !props.error) {
-      props.enableNextStep(true);
-    } else {
-      props.enableNextStep(false);
-    }
+    const hasNoErrors = !error && !props.error;
+    props.onChange(props.id, props.value, props.error, hasNoErrors);
+    props.enableNextStep(hasNoErrors);
   };
 
   const validateConfirmation = (value) => {
@@ -34,9 +33,15 @@ export default function PasswordConfirm(props) {
 
   return (
     <>
-      <DefaultInput {...props} onChange={onPasswordChange} type="password" />
+      <DefaultInput
+        {...props}
+        name={props.id}
+        onChange={onPasswordChange}
+        type="password"
+      />
       <DefaultInput
         value={confirmation}
+        name="passwordConfirmation"
         type="password"
         label={"Confirm password"}
         error={confirmationError}

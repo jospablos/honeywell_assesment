@@ -21,21 +21,21 @@ export default function SignupPage() {
   const [nextStepEnabled, setNextStepEnabled] = useState(false);
   const [formState, setFormState] = useState(generateFormState(signupConfig));
 
-  const handleInputChange = (inputId, value, error) => {
+  const handleInputChange = (inputId, value, error, isComplete) => {
     return setFormState({
       ...formState,
       [inputId]: {
         ...formState[inputId],
         value,
         error,
-        isComplete: !error,
+        isComplete: isComplete ?? !error,
       },
     });
   };
 
   const goToPreviousStep = (step) => {
     if (step === 'password') {
-      handleInputChange('password', '', null);
+      handleInputChange('password', '', null, false);
     }
     setCurrentStep(step);
   }
