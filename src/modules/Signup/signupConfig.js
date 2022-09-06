@@ -18,7 +18,7 @@ export const signupConfig = {
   },
   username: {
     id: "username",
-    indicatorLabel: "username",
+    indicatorLabel: "Username",
     label: "Choose a username:",
     component: DefaultInput,
     validate: createValidator([required("Username"), username]),

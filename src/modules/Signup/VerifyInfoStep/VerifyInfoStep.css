@@ -6,7 +6,7 @@
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
     min-width: 310px;
 }
 
