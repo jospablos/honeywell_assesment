@@ -3,6 +3,7 @@ import FieldStepper from "./FieldStepper/FieldStepper";
 import { signupConfig } from "./signupConfig";
 import SubmitStep from "./SubmitStep/SubmitStep";
 import SuccessStep from "./SuccessStep/SuccessStep";
+import VerifyInfoStep from "./VerifyInfoStep/VerifyInfoStep";
 
 const generateFormState = (config) => {
   return Object.values(config).reduce((acc, input) => {
@@ -32,22 +33,30 @@ export default function SignupPage() {
     });
   };
 
+  const goToPreviousStep = (step) => {
+    setCurrentStep(step);
+  }
+
   const goToNextStep = () => {    
     switch(currentStep) {
+      case "verify":
+          setCurrentStep("submit");
+        break;
+
       case "submit":
         setCurrentStep("success");
         break;
         
-        case "success":
-          // TODO: what's next from here?
-          break;
+      case "success":
+        // TODO: what's next from here?
+        break;
 
       // TODO: we might be able to move field stepping completely to the FieldStepper component and
       // keep only filling form / submitting / success states here.
       default: {
         const nextIncomplete = Object.keys(formState).find((inputId) => !formState[inputId].isComplete)
         if (!nextIncomplete) {
-          setCurrentStep("submit");
+          setCurrentStep("verify");
         } else {
           const isCurrentStepComplete = formState[currentStep].isComplete;
           if (isCurrentStepComplete) {
@@ -61,6 +70,9 @@ export default function SignupPage() {
 
   const renderFormBody = () => {
     switch(currentStep) {
+      case "verify":
+        return <VerifyInfoStep state={formState} goToNextStep={goToNextStep} goToPreviousStep={goToPreviousStep} />;
+
       case "submit":
         return <SubmitStep state={formState} goToNextStep={goToNextStep} />;
       
