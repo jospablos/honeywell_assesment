@@ -8,7 +8,7 @@ function VerifyField({ id, value, goToPreviousStep, obfuscate }) {
   const onMouseUp = () => setShowValue(false);
 
 
-  const renderedValue = obfuscate && !showValue ? value.replace(/./g, '*') : value;
+  const renderedValue = obfuscate && !showValue ? '********' : value;
 
   return (
     <div className="VerifyField-container">
