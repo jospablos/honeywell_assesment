@@ -29,7 +29,7 @@ export default function VerifyInfoStep({ state, goToNextStep, goToPreviousStep }
 
     return (
       <div className="VerifyInfoStep-container Page-full">
-        <h1>Please verify your info</h1>
+        <h1>Verify your info</h1>
         <div className="VerifyInfoStep-fields">
         {fields.map(([id, { value }]) => {
           return (
