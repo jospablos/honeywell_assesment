@@ -1,3 +1,7 @@
+.VerifyInfoStep-container {
+    animation: fade 1s ease;
+}
+
 .VerifyInfoStep-fields {
     padding: 60px 0;
 }
