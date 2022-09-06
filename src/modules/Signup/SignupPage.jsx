@@ -34,6 +34,9 @@ export default function SignupPage() {
   };
 
   const goToPreviousStep = (step) => {
+    if (step === 'password') {
+      handleInputChange('password', '', null);
+    }
     setCurrentStep(step);
   }
 

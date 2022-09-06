@@ -1,15 +1,6 @@
 import { useState } from "react";
 import DefaultInput from "./DefaultInput";
 
-// const validateConfirmation = (value, formState) => {
-//   if (!value) {
-//     return "Confirmation is required";
-//   }
-//   if (value !== formState.passsword.value) {
-//     return "Passwords do not match";
-//   }
-// };
-
 // TODO: when converted to TS, create a common input interface.
 export default function PasswordConfirm(props) {
   const [confirmation, setConfirmation] = useState('');
@@ -43,9 +34,10 @@ export default function PasswordConfirm(props) {
 
   return (
     <>
-      <DefaultInput {...props} onChange={onPasswordChange} />
+      <DefaultInput {...props} onChange={onPasswordChange} type="password" />
       <DefaultInput
         value={confirmation}
+        type="password"
         label={"Confirm password"}
         error={confirmationError}
         onChange={onConfirmationChange}
