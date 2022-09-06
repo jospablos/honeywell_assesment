@@ -1,0 +1,39 @@
+.VerifyInfoStep-fields {
+    padding: 60px 0;
+}
+
+.VerifyField-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    min-width: 310px;
+}
+
+.VerifyField-container button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.VerifyField-container .VerifyFieldName-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.VerifyField-container .VerifyFieldName-name {
+    color: #ffffff70;
+    margin-bottom: 5px;
+}
+
+.VerifyFieldName-value {
+    font-size: 18px;
+    max-width: 290px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
