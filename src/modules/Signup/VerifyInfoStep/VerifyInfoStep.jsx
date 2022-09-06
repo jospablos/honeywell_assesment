@@ -17,7 +17,7 @@ function VerifyField({ id, value, goToPreviousStep, obfuscate }) {
         <span className="VerifyFieldName-value">{renderedValue}</span>
       </div>
       <div className="VerifyField-buttons">
-        {obfuscate && <button onMouseUp={onMouseUp} onMouseDown={onMouseDown}>{'view'}</button>}
+        {obfuscate && <button onMouseUp={onMouseUp} onMouseDown={onMouseDown} onTouchEnd={onMouseUp} onTouchStart={onMouseDown}>{'view'}</button>}
         <button onClick={() => goToPreviousStep(id)}>{'edit'}</button>
       </div>
     </div>
