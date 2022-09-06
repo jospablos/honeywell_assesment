@@ -1,7 +1,10 @@
-export default function DefaultSpacer() {
+import './DefaultSpacer.css';
+
+export default function DefaultSpacer({stepIsComplete}) {
+    const color = stepIsComplete ? '#adff2f' : '#ffffff42';
     return (
-        <div style={{display: 'flex', alignItems: 'center' }}>
-            <div style={{ borderTop: '2px dotted white', width: 40, verticalAlign: 'center'}} className="ProgressIndicator-spacer"></div>
+        <div className="Spacer-container">
+            <div style={{ borderTop: `7px dotted ${color}`, width: 40, verticalAlign: 'center'}} className="Spacer-spacer"></div>
         </div>
     );
 }

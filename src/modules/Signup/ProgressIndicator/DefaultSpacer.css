@@ -1,0 +1,8 @@
+.Spacer-container {
+    display: flex;
+    align-items: center;
+}
+
+.Spacer-spacer {
+    transition: all 0.2s ease-in-out;
+}

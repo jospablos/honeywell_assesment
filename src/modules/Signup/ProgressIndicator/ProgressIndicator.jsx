@@ -15,11 +15,12 @@ export default function ProgressIndicator({ currentStep, state, config, stepRend
     return (
         <div className="ProgressIndicator-container">
             {steps.map((step, index) => {
+                // const needsSpacer = index > 0;
                 const needsSpacer = index < steps.length - 1;
                 return (
                     <React.Fragment key={step.id}>
                         <Renderer {...step} />
-                        {needsSpacer && <Spacer />}
+                        {needsSpacer && <Spacer stepIsComplete={step.complete} />}
                     </React.Fragment>
                 );
             })}
